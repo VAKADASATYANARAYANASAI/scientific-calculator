@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body style="margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #000;">
+
+    <div style="background-color: #000; width: 300px; padding: 20px; border-radius: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.5);">
+        <h1 style="color: white; text-align: center; font-size: 18px; margin: 10px 0;">Welcome to Calculator</h1>
+        <input id="display" type="text" readonly 
+               style="width: 100%; height: 60px; font-size: 24px; text-align: right; border: none; background-color: #fff; border-radius: 10px; margin-bottom: 10px; padding: 10px; box-sizing: border-box;">
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+            <!-- First Row -->
+            <button onclick="clearDisplay()" style="background-color: #888; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">AC</button>
+            <button onclick="backspace()" style="background-color: #888; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">←</button>
+            <button onclick="addToDisplay('%')" style="background-color: #888; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">%</button>
+            <button onclick="addToDisplay('/')" style="background-color: orange; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">÷</button>
+
+            <!-- Second Row -->
+            <button onclick="addToDisplay('7')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">7</button>
+            <button onclick="addToDisplay('8')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">8</button>
+            <button onclick="addToDisplay('9')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">9</button>
+            <button onclick="addToDisplay('*')" style="background-color: orange; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">×</button>
+
+            <!-- Third Row -->
+            <button onclick="addToDisplay('4')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">4</button>
+            <button onclick="addToDisplay('5')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">5</button>
+            <button onclick="addToDisplay('6')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">6</button>
+            <button onclick="addToDisplay('-')" style="background-color: orange; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">−</button>
+
+            <!-- Fourth Row -->
+            <button onclick="addToDisplay('1')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">1</button>
+            <button onclick="addToDisplay('2')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">2</button>
+            <button onclick="addToDisplay('3')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">3</button>
+            <button onclick="addToDisplay('+')" style="background-color: orange; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">+</button>
+
+            <!-- Fifth Row -->
+            <button onclick="addToDisplay('00')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">00</button>
+            <button onclick="addToDisplay('0')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">0</button>
+            <button onclick="addToDisplay('.')" style="background-color: #333; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">.</button>
+            <button onclick="calculate()" style="background-color: orange; color: white; font-size: 20px; border: none; border-radius: 10px; height: 60px;">=</button>
+        </div>
+    </div>
+
+    <script>
+        // Add to display
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        // Clear display
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        // Backspace
+        function backspace() {
+            let display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        // Calculate result
+        function calculate() {
+            try {
+                let result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>
